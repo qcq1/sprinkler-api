@@ -1,5 +1,5 @@
 syntax = "v1"
 
 import "api/base.api"
-import "api/deviceConfig.api"
-import "api/login.api"
+import "api/device.api"
+import "api/user.api"
