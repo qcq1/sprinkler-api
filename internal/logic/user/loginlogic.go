@@ -1,28 +1,29 @@
-package logic
+package user
 
 import (
 	"context"
+
 	"sprinkler/internal/svc"
 	"sprinkler/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type SprinklerLogic struct {
+type LoginLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewSprinklerLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SprinklerLogic {
-	return &SprinklerLogic{
+func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic {
+	return &LoginLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *SprinklerLogic) Sprinkler(req *types.Request) (resp *types.Response, err error) {
+func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err error) {
 	// todo: add your logic here and delete this line
 
 	return

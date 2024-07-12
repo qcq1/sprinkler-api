@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+
 	"sprinkler/internal/config"
 	"sprinkler/internal/handler"
 	"sprinkler/internal/svc"
@@ -11,7 +12,7 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "etc/sprinkler-api.yaml", "the config file")
+var configFile = flag.String("f", "etc/sprinkler.yaml", "the config file")
 
 func main() {
 	flag.Parse()

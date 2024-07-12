@@ -1,0 +1,23 @@
+syntax = "v1"
+
+import "base.api"
+
+type (
+    DeviceConfigReq {
+        DeviceId string `json:"deviceId"`
+    }
+    DeviceConfigResp {
+        BaseResp
+        DeviceConfigId      string `json:"deviceConfigId"`
+        DeviceConfigDetails string `json:"deviceConfigDetails"`
+    }
+)
+
+@server (
+    prefix: /device
+    group:  device
+)
+service sprinkler {
+    @handler DeviceConfigHandler
+    post /config (DeviceConfigReq) returns (DeviceConfigResp)
+}

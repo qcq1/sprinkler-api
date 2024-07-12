@@ -3,6 +3,9 @@ package handler
 
 import (
 	"net/http"
+
+	device "sprinkler/internal/handler/device"
+	user "sprinkler/internal/handler/user"
 	"sprinkler/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -13,9 +16,21 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/device/config",
-				Handler: SprinklerHandler(serverCtx),
+				Path:    "/config",
+				Handler: device.DeviceConfigHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/device"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/login",
+				Handler: user.LoginHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/user"),
 	)
 }

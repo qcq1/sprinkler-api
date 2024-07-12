@@ -1,0 +1,23 @@
+syntax = "v1"
+
+import "base.api"
+
+type (
+    LoginReq {
+        Username string `json:"username"`
+        Password string `json:"password"`
+    }
+    LoginResp {
+        BaseResp
+        Token string `json:"token"`
+    }
+)
+
+@server (
+    prefix: /user
+    group:  user
+)
+service sprinkler {
+    @handler LoginHandler
+    post /login (LoginReq) returns (LoginResp)
+}
